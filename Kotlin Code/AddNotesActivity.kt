@@ -75,7 +75,10 @@ class NoteDatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener
         var year = c.get(Calendar.YEAR)
         var month =  c.get(Calendar.MONTH)
 
-        return DatePickerDialog(requireActivity(),this,year,month+1,day)
+        val datePickerDialog = DatePickerDialog(requireActivity(), this, year, month, day)
+        datePickerDialog.datePicker.minDate = c.timeInMillis
+
+        return datePickerDialog
     }
     @SuppressLint("SetTextI18n")
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int)
